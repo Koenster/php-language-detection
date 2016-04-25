@@ -2,7 +2,8 @@
 
 use koenster\PHPLanguageDetection\BrowserLocalization;
 
-class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
+class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var BrowserLocalization $browserLocalization
@@ -31,7 +32,8 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $this->availableLocales = ['nl-NL', 'en-GB'];
         $this->defaultLocale = 'en-GB';
-        $this->browserLocalization = new BrowserLocalization($this->defaultLocale, $this->availableLocales, $this->browserLocalizationPreference);
+        $this->browserLocalization = new BrowserLocalization($this->defaultLocale, $this->availableLocales,
+            $this->browserLocalizationPreference);
     }
 
     /**
@@ -49,7 +51,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $preferencesFromBrowser = 'nl-NL,nl;q=0.9,it;q=0.7,es;q=0.5';
         $result = $this->browserLocalization->setPreferences($preferencesFromBrowser);
-        $this->assertSame($preferencesFromBrowser,$result);
+        $this->assertSame($result, $this->browserLocalization);
     }
 
     /**
@@ -59,7 +61,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $available = ['nl-NL', 'en-GB'];
         $result = $this->browserLocalization->setAvailable($available);
-        $this->assertSame($available,$result);
+        $this->assertSame($result, $this->browserLocalization);
     }
 
     /**
@@ -69,7 +71,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $default = 'en-GB';
         $result = $this->browserLocalization->setPreferences($default);
-        $this->assertSame($default,$result);
+        $this->assertSame($result, $this->browserLocalization);
     }
 
     /**
@@ -79,7 +81,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $preferencesFromBrowser = '';
         $result = $this->browserLocalization->preferences($preferencesFromBrowser);
-        $this->assertSame(null,$result);
+        $this->assertSame(null, $result);
     }
 
     /**
@@ -90,7 +92,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $result = $this->browserLocalization->preferences($this->browserLocalizationPreference);
         $expected = ["nl-NL", "nl", "it", "es"];
-        $this->assertSame($expected,$result);
+        $this->assertSame($expected, $result);
     }
 
     /**
@@ -102,7 +104,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
 
         $expected = ['nl' => 'nl-NL', 'en' => 'en-GB'];
 
-        $this->assertSame($expected,$result);
+        $this->assertSame($expected, $result);
     }
 
     /**
@@ -113,7 +115,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
         $this->browserLocalization->setPreferences($this->browserLocalizationPreference);
         $this->browserLocalization->preferences();
         $result = $this->browserLocalization->match();
-        $this->assertSame('nl-NL',$result);
+        $this->assertSame('nl-NL', $result);
     }
 
     /**
@@ -124,7 +126,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
         $this->browserLocalization->setPreferences('nl-BE,nl;q=0.9,it;q=0.7,es;q=0.5');
         $this->browserLocalization->preferences();
         $result = $this->browserLocalization->match();
-        $this->assertSame('nl-NL',$result);
+        $this->assertSame('nl-NL', $result);
     }
 
     /**
@@ -134,7 +136,7 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $this->browserLocalization->setPreferences('');
         $result = $this->browserLocalization->detect();
-        $this->assertSame('en-GB',$result);
+        $this->assertSame('en-GB', $result);
     }
 
     /**
@@ -144,6 +146,6 @@ class BrowserLocalizationTest extends \PHPUnit_Framework_TestCase {
     {
         $this->browserLocalization->setPreferences($this->browserLocalizationPreference);
         $result = $this->browserLocalization->detect();
-        $this->assertSame('nl-NL',$result);
+        $this->assertSame('nl-NL', $result);
     }
 }

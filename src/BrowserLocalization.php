@@ -2,7 +2,8 @@
 
 use koenster\PHPLanguageDetection\contract\LocalizationContract;
 
-class BrowserLocalization implements LocalizationContract {
+class BrowserLocalization implements LocalizationContract
+{
 
     const LOCALE_PATTERN = '/^[a-z]{2}-[A-Z]{2}/';
 
@@ -52,6 +53,7 @@ class BrowserLocalization implements LocalizationContract {
     public function setAvailable(array $available)
     {
         $this->available = $available;
+
         return $this;
     }
 
@@ -63,6 +65,7 @@ class BrowserLocalization implements LocalizationContract {
     public function setDefault($default)
     {
         $this->default = $default;
+
         return $this;
     }
 
@@ -74,6 +77,7 @@ class BrowserLocalization implements LocalizationContract {
     public function setPreferences($preferences)
     {
         $this->browserPreferences = $preferences;
+
         return $this;
     }
 
@@ -111,7 +115,7 @@ class BrowserLocalization implements LocalizationContract {
             $this->browserPreference = $preferences;
         }
 
-        $browserPreferences = explode(",",$this->browserPreference);
+        $browserPreferences = explode(",", $this->browserPreference);
 
         if (isset($browserPreferences[0]) && strlen($browserPreferences[0]) >= 2) {
 
@@ -133,8 +137,8 @@ class BrowserLocalization implements LocalizationContract {
         $languages = $this->setLanguages();
 
         foreach ($this->preferences as $preference) {
-            if (preg_match(self::LOCALE_PATTERN,$preference) && in_array($preference,$this->available)) {
-                return $this->available[array_search($preference,$this->available)];
+            if (preg_match(self::LOCALE_PATTERN, $preference) && in_array($preference, $this->available)) {
+                return $this->available[array_search($preference, $this->available)];
             } elseif (isset($languages[$preference])) {
                 return $languages[$preference];
             }
@@ -154,7 +158,7 @@ class BrowserLocalization implements LocalizationContract {
     {
         $languages = [];
         foreach ($this->available as $locale) {
-            $languages[substr($locale,0,2)] = $locale;
+            $languages[substr($locale, 0, 2)] = $locale;
         }
 
         return $languages;
@@ -173,12 +177,13 @@ class BrowserLocalization implements LocalizationContract {
     {
         $locales = [];
         foreach ($preferences as $preference) {
-            if (preg_match(self::LOCALE_PATTERN,$preference)) {
+            if (preg_match(self::LOCALE_PATTERN, $preference)) {
                 $locales[] = $preference;
             } else {
-                $locales[] = substr($preference,0,2);
+                $locales[] = substr($preference, 0, 2);
             }
         }
+
         return $locales;
     }
 }
