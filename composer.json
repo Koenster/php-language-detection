@@ -1,0 +1,22 @@
+{
+  "name": "koenster/php-language-detection",
+  "description": "Detects the preferred language from the browser and compares this with the available languages/locales to return the best language/locale to redirect.",
+  "keywords": ["php language detection", "browser localization detection", "browser localisation"],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=5.5.9"
+  },
+  "require-dev": {
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "classmap": [
+
+    ],
+    "psr-4": {
+      "koenster\\PHPLanguageDetection\\": "src/"
+    }
+  }
+}

@@ -1,9 +1,6 @@
-# PHP localization / language detection script
-Detects the preferred language from the browser and compares this with the available languages/locales to return the best language/locale to redirect.
+<?php
 
-## How to use
-
-```
+require_once 'vendor/autoload.php';
 
 use koenster\PHPLanguageDetection\BrowserLocalization;
 
@@ -20,9 +17,3 @@ $browser->setAvailable($available)
 
 // Will return or a default or when available, the available locale.
 echo $browser->detect();
-
-```
-
-##License
-
-This Language Detection script is open-sourced software licensed under the MIT license.
