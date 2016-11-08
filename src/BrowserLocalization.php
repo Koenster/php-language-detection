@@ -34,13 +34,13 @@ class BrowserLocalization implements LocalizationContract
      *
      * @param string $locale
      * @param array $locales
-     * @param string $browserPreference
+     * @param string $browserPreferences
      */
     public function __construct($locale = 'en-GB', array $locales = ['en-GB'], $browserPreferences = '')
     {
         $this->default = $locale;
         $this->available = $locales;
-        $this->browserPreferences = $browserPreference;
+        $this->browserPreferences = $browserPreferences;
 
         return $this;
     }
@@ -115,7 +115,7 @@ class BrowserLocalization implements LocalizationContract
             $this->browserPreferences = $preferences;
         }
 
-        $browserPreferences = explode(",", $this->browserPreference);
+        $browserPreferences = explode(",", $this->browserPreferences);
 
         if (isset($browserPreferences[0]) && strlen($browserPreferences[0]) >= 2) {
 
